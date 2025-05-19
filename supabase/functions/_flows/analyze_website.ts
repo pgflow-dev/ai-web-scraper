@@ -8,15 +8,12 @@ type Input = { url: string };
 
 export default new Flow<Input>({ slug: "analyzeWebsite", maxAttempts: 3 })
   .step({ slug: "website" }, ({ run }) => scrapeWebsite(run.url))
-
   .step({ slug: "summary", dependsOn: ["website"] }, ({ website }) =>
     summarize(website.content),
   )
-
   .step({ slug: "tags", dependsOn: ["website"] }, ({ website }) =>
     extractTags(website.content),
   )
-
   .step(
     { slug: "saveToDb", dependsOn: ["summary", "tags"] },
     ({ run, summary, tags }) =>

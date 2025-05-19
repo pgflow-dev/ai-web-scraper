@@ -2,6 +2,8 @@
 
 _Short, no-frills reminder of every command you need._
 
+[→ View the full tutorial here](https://pgflow.dev/tutorials/ai-web-scraper/)
+
 ---
 
 ## 0. One-time setup
@@ -27,16 +29,7 @@ npx supabase@2.22.12 start
 
 ---
 
-## 2. Compile the pgflow workflow to SQL
-
-```bash
-# Generates supabase/migrations/<timestamp>_analyze_website.sql
-npx pgflow@latest compile supabase/functions/_flows/analyze_website.ts
-```
-
----
-
-## 3. Run all database migrations (table + flow)
+## 2. Run all database migrations (table + flow)
 
 ```bash
 npx supabase@2.22.12 migrations up --local
@@ -44,7 +37,7 @@ npx supabase@2.22.12 migrations up --local
 
 ---
 
-## 4. Serve the Edge Functions (keep this terminal open)
+## 3. Serve the Edge Functions (keep this terminal open)
 
 ```bash
 npx supabase@2.22.12 functions serve
@@ -52,7 +45,7 @@ npx supabase@2.22.12 functions serve
 
 ---
 
-## 5. Start the worker (new terminal)
+## 4. Start the worker (new terminal)
 
 ```bash
 curl -X POST http://127.0.0.1:54321/functions/v1/analyze_website_worker
@@ -62,18 +55,18 @@ The first `curl` boots the worker; it stays alive and polls for jobs.
 
 ---
 
-## 6. Trigger a job (SQL editor or psql)
+## 5. Trigger a job (SQL editor or psql)
 
 ```sql
 select * from pgflow.start_flow(
-  flow_slug => 'analyze_website',
+  flow_slug => 'analyzeWebsite',
   input     => '{"url":"https://supabase.com"}'
 );
 ```
 
 ---
 
-## 7. Check results
+## 6. Check results
 
 ```sql
 select * from websites;                 -- scraped data

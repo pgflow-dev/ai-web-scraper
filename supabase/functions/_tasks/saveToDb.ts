@@ -1,6 +1,6 @@
 import { createClient } from "jsr:@supabase/supabase-js";
 
-export default async function saveWebsite(row: {
+export default async function saveToDb(row: {
   website_url: string;
   summary: string;
   tags: string[];
