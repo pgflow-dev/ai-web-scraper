@@ -17,6 +17,7 @@ export default async function extractTags(content: string) {
     text: {
       format: {
         type: "json_schema",
+        name: "tags_format",
         schema: {
           type: "object",
           properties: {
@@ -25,11 +26,11 @@ export default async function extractTags(content: string) {
               items: {
                 type: "string",
               },
-              maxItems: 10,
               description: "An array of 5-10 descriptive tags",
             },
           },
           required: ["tags"],
+          additionalProperties: false,
         },
       },
     },

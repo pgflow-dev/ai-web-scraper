@@ -17,6 +17,7 @@ export default async function summarize(content: string) {
     text: {
       format: {
         type: "json_schema",
+        name: "summary_format",
         schema: {
           type: "object",
           properties: {
@@ -26,6 +27,7 @@ export default async function summarize(content: string) {
             },
           },
           required: ["summary"],
+          additionalProperties: false,
         },
       },
     },
