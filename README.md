@@ -1,7 +1,5 @@
 # AI Web Scraper – Quick-start Cheat Sheet
 
-_Short, no-frills reminder of every command you need._
-
 [→ View the full tutorial here](https://pgflow.dev/tutorials/ai-web-scraper/)
 
 ---
